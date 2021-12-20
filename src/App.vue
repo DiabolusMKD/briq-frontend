@@ -16,7 +16,10 @@ export default {
   },
   created() {
     this.$store.dispatch("fetchStats").catch((error) => {
-      console.log(error);
+      this.$router.push({
+        name: "ErrorDisplay",
+        params: { error: error },
+      });
     });
   },
   computed: {
@@ -47,5 +50,9 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+ul {
+  list-style: none;
 }
 </style>
