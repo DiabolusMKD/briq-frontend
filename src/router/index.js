@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Bookings from "../views/Bookings.vue";
+import BookingList from "@/views/BookingList.vue";
+import ErrorDisplay from "@/views/ErrorDisplay.vue";
 
 const routes = [
   {
     path: "/",
-    name: "Bookings",
-    component: Bookings,
+    name: "BookingList",
+    component: BookingList,
   },
   {
     path: "/about",
@@ -15,6 +16,12 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  },
+  {
+    path: "/error/:error",
+    name: "ErrorDisplay",
+    props: true,
+    component: ErrorDisplay,
   },
 ];
 

@@ -11,7 +11,7 @@ const apiClient = axios.create({
 
 export default {
   getBookings() {
-    return apiClient.get("/api/v1/bookings");
+    return apiClient.get("/api/v1/bookings?limit=10");
   },
   getStats() {
     return apiClient.get("/api/v1/bookings/stats");
