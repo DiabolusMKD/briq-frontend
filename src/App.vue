@@ -1,10 +1,31 @@
 <template>
+  <TopBar :stats="stats" />
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div>
   <router-view />
 </template>
+
+<script>
+import TopBar from "@/components/TopBar.vue";
+
+export default {
+  components: {
+    TopBar,
+  },
+  created() {
+    this.$store.dispatch("fetchStats").catch((error) => {
+      console.log(error);
+    });
+  },
+  computed: {
+    stats() {
+      return this.$store.state.stats;
+    },
+  },
+};
+</script>
 
 <style>
 #app {
