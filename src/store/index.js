@@ -16,6 +16,9 @@ export default createStore({
     SET_BOOKINGS(state, bookings) {
       state.bookings = bookings;
     },
+    ADD_BOOKING_NOTIFICATION(state, notification) {
+      state.front_desk_alerts.push(notification);
+    },
   },
   actions: {
     fetchStats({ commit }) {
@@ -24,7 +27,7 @@ export default createStore({
           commit("SET_STATS", response.data);
         })
         .catch((error) => {
-          console.log(error);
+          throw error;
         });
     },
     fetchBookings({ commit }) {
@@ -33,7 +36,16 @@ export default createStore({
           commit("SET_BOOKINGS", response.data);
         })
         .catch((error) => {
-          console.log(error);
+          throw error;
+        });
+    },
+    createBookingNotification({ commit }, notification) {
+      BookingService.postBookingNotification(notification)
+        .then(() => {
+          commit("ADD_BOOKING_NOTIFICATION");
+        })
+        .catch((error) => {
+          throw error;
         });
     },
   },

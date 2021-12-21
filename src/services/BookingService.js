@@ -16,4 +16,7 @@ export default {
   getStats() {
     return apiClient.get("/api/v1/bookings/stats");
   },
+  postBookingNotification(notification) {
+    return apiClient.post("/api/v1/bookings/front-desk-alert", notification);
+  },
 };
