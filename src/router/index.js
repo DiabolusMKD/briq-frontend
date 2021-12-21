@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import BookingList from "@/views/BookingList.vue";
 import ErrorDisplay from "@/views/ErrorDisplay.vue";
-import BookingNotification from "@/views/BookingNotification.vue";
+import BookingAlertCreate from "@/views/BookingAlertCreate.vue";
 
 const routes = [
   {
@@ -10,19 +10,19 @@ const routes = [
     component: BookingList,
   },
   {
-    path: "/about",
-    name: "About",
+    path: "/alerts",
+    name: "Alerts",
     // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
+    // this generates a separate chunk (alerts.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      import(/* webpackChunkName: "alerts" */ "../views/BookingAlertList.vue"),
   },
   {
     path: "/bookings/notification/:id",
-    name: "BookingNotification",
+    name: "BookingAlertCreate",
     props: true,
-    component: BookingNotification,
+    component: BookingAlertCreate,
   },
   {
     path: "/error/:error",
