@@ -74,7 +74,7 @@ export default createStore({
     createBookingNotification({ commit }, notification) {
       BookingService.postBookingNotification(notification)
         .then(() => {
-          commit("ADD_BOOKING_NOTIFICATION");
+          commit("ADD_BOOKING_NOTIFICATION", notification);
           commit(
             "ADD_NOTIFICATION_MESSAGE",
             "Alert notification successfully added!"

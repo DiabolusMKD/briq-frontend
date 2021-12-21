@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       notification: {
-        bookingId: this.id,
+        bookingId: "",
         reason: "",
       },
     };
@@ -40,8 +40,13 @@ export default {
         return;
       }
 
+      const notification = {
+        ...this.notification,
+        bookingId: this.id,
+      };
+
       this.$store
-        .dispatch("createBookingNotification", this.notification)
+        .dispatch("createBookingNotification", notification)
         .then(() => {
           setTimeout(() => {
             this.$store.commit("ADD_NOTIFICATION_MESSAGE", "");
