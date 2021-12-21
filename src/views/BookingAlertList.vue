@@ -1,10 +1,12 @@
 <template>
-  <h1>This is an alerts page</h1>
-  <BookingAlertCard
-    v-for="(alert, key) in front_desk_alerts.frontDeskAlerts"
-    :key="key"
-    :alert="alert"
-  />
+  <h1>Alert Notifications</h1>
+  <div class="alert-list">
+    <BookingAlertCard
+      v-for="(alert, key) in front_desk_alerts.frontDeskAlerts"
+      :key="key"
+      :alert="alert"
+    />
+  </div>
 </template>
 
 <script>

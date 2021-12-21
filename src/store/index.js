@@ -39,7 +39,7 @@ export default createStore({
     },
     fetchBookings({ commit, state }) {
       const now = new Date().getTime();
-      // check if last fetched bookings time is bigger than 1 minute
+      // check if last fetched bookings time is more than 1 minute
       if (
         state.last_fetched_bookings_timestamp &&
         (now - new Date(state.last_fetched_bookings_timestamp).getTime()) /

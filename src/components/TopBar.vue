@@ -1,13 +1,21 @@
 <template>
-  <div>
-    Made Today:
-    {{ stats.kpis.bookings.madeThisDay }}
-    Made This Week:
-    {{ stats.kpis.bookings.madeThisWeek }}
-    How Busy Today:
-    {{ stats.kpis.howBusyIsItFactor.thisDay }}
-    How Busy This Week:
-    {{ stats.kpis.howBusyIsItFactor.thisWeek }}
+  <div class="top-bar">
+    <div class="logo">
+      <img
+        src="https://briq.app/image/7619/ee0c0574-34d7-4a1f-b8c1-733bd3f9852e.jpg"
+        alt="Briq Bookings"
+      />
+    </div>
+    <div class="stats">
+      <h3>Made:</h3>
+      <span>Today: {{ stats.kpis.bookings.madeThisDay }}</span>
+      <span>This Week: {{ stats.kpis.bookings.madeThisWeek }}</span>
+    </div>
+    <div class="stats">
+      <h3>How Busy:</h3>
+      <span>Today: {{ stats.kpis.howBusyIsItFactor.thisDay }}</span>
+      <span>This Week: {{ stats.kpis.howBusyIsItFactor.thisWeek }}</span>
+    </div>
   </div>
 </template>
 
@@ -22,18 +30,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.top-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 2px solid rgb(39, 37, 37);
+  padding-bottom: 10px;
+  padding-top: 10px;
+  background-color: #f7f7f7;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.stats span {
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.stats h3 {
+  margin-top: 0;
 }
 </style>
