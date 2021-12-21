@@ -1,14 +1,26 @@
 <template>
   <div class="booking-card">
-    <span>Booked @{{ booking.bookedAt }}</span>
-    <br />
-    <span>For date: {{ booking.date }} - {{ booking.time }}</span>
-    <h4>Name: {{ booking.name }}</h4>
-    <p>Group Size: {{ booking.groupSize }}</p>
-    <span>Deals: </span>
-    <ul>
-      <li v-for="(deal, key) in booking.deals" :key="key">{{ deal }}</li>
-    </ul>
+    <h2>Name: {{ booking.name }}</h2>
+    <p>
+      <span class="card-title">Booked at:</span>
+      <span class="card-value">{{ booking.bookedAt }}</span>
+    </p>
+    <p>
+      <span class="card-title">For date:</span>
+      <span class="card-value">{{ booking.date }} - {{ booking.time }}</span>
+    </p>
+    <p>
+      <span class="card-title">Group Size:</span>
+      <span class="card-value">{{ booking.groupSize }}</span>
+    </p>
+    <p>
+      <span class="card-title">Deals: </span>
+      <span class="card-value">
+        <ul>
+          <li v-for="(deal, key) in booking.deals" :key="key">{{ deal }}</li>
+        </ul>
+      </span>
+    </p>
   </div>
 </template>
 
@@ -23,11 +35,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.booking-card {
-  border: 1px solid #000;
-  padding: 5px;
-  margin-bottom: 10px;
-}
-</style>
