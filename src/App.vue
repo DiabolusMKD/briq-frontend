@@ -1,8 +1,8 @@
 <template>
   <TopBar :stats="stats" />
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link :to="{ name: 'BookingList' }">Home</router-link> |
+    <router-link :to="{ name: 'Alerts' }">Booking Alerts</router-link>
   </div>
   <router-view />
 </template>

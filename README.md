@@ -10,6 +10,16 @@ npm install
 npm run serve
 ```
 
+### Run backend mockup server
+```
+npm run back-end
+```
+
+### Compiles and hot-reloads and run backend mockup server
+```
+npm run start-app
+```
+
 ### Compiles and minifies for production
 ```
 npm run build
@@ -19,6 +29,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

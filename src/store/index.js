@@ -8,6 +8,7 @@ export default createStore({
     booking: {},
     front_desk_alerts: [],
     front_desk_alert: {},
+    last_fetched_bookings_timestamp: "",
   },
   mutations: {
     SET_STATS(state, stats) {
@@ -15,6 +16,12 @@ export default createStore({
     },
     SET_BOOKINGS(state, bookings) {
       state.bookings = bookings;
+    },
+    SET_BOOKING_NOTIFICATIONS(state, alerts) {
+      state.front_desk_alerts = alerts;
+    },
+    SET_LAST_FETCHED_BOOKINGS(state, time) {
+      state.last_fetched_bookings_timestamp = time;
     },
     ADD_BOOKING_NOTIFICATION(state, notification) {
       state.front_desk_alerts.push(notification);
@@ -30,10 +37,31 @@ export default createStore({
           throw error;
         });
     },
-    fetchBookings({ commit }) {
-      return BookingService.getBookings()
+    fetchBookings({ commit, state }) {
+      const now = new Date().getTime();
+      // check if last fetched bookings time is bigger than 1 minute
+      if (
+        state.last_fetched_bookings_timestamp &&
+        (now - new Date(state.last_fetched_bookings_timestamp).getTime()) /
+          60000 <=
+          1
+      ) {
+        commit("SET_BOOKINGS", state.bookings);
+      } else {
+        return BookingService.getBookings()
+          .then((response) => {
+            commit("SET_BOOKINGS", response.data);
+            commit("SET_LAST_FETCHED_BOOKINGS", now);
+          })
+          .catch((error) => {
+            throw error;
+          });
+      }
+    },
+    fetchBookingNotifications({ commit }) {
+      return BookingService.getBookingNotifications()
         .then((response) => {
-          commit("SET_BOOKINGS", response.data);
+          commit("SET_BOOKING_NOTIFICATIONS", response.data);
         })
         .catch((error) => {
           throw error;

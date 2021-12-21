@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     createNotification(id) {
-      this.$router.push({ name: "BookingNotification", params: { id } });
+      this.$router.push({ name: "BookingAlertCreate", params: { id } });
     },
   },
 };
