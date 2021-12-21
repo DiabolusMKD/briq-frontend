@@ -43,6 +43,9 @@ export default {
       this.$store
         .dispatch("createBookingNotification", this.notification)
         .then(() => {
+          setTimeout(() => {
+            this.$store.commit("ADD_NOTIFICATION_MESSAGE", "");
+          }, 3000);
           this.$router.push({
             name: "BookingList",
           });

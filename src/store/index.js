@@ -9,6 +9,7 @@ export default createStore({
     front_desk_alerts: [],
     front_desk_alert: {},
     last_fetched_bookings_timestamp: "",
+    notification_message: "",
   },
   mutations: {
     SET_STATS(state, stats) {
@@ -25,6 +26,9 @@ export default createStore({
     },
     ADD_BOOKING_NOTIFICATION(state, notification) {
       state.front_desk_alerts.push(notification);
+    },
+    ADD_NOTIFICATION_MESSAGE(state, message) {
+      state.notification_message = message;
     },
   },
   actions: {
@@ -71,6 +75,10 @@ export default createStore({
       BookingService.postBookingNotification(notification)
         .then(() => {
           commit("ADD_BOOKING_NOTIFICATION");
+          commit(
+            "ADD_NOTIFICATION_MESSAGE",
+            "Alert notification successfully added!"
+          );
         })
         .catch((error) => {
           throw error;

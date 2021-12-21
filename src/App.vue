@@ -4,15 +4,20 @@
     <router-link :to="{ name: 'BookingList' }">Bookings List</router-link>
     <router-link :to="{ name: 'Alerts' }">Booking Alerts</router-link>
   </div>
+  <div v-if="notification_message">
+    <NotificationMessage :notification_message="notification_message" />
+  </div>
   <router-view />
 </template>
 
 <script>
 import TopBar from "@/components/TopBar.vue";
+import NotificationMessage from "@/components/NotificationMessage.vue";
 
 export default {
   components: {
     TopBar,
+    NotificationMessage,
   },
   created() {
     this.$store.dispatch("fetchStats").catch((error) => {
@@ -25,6 +30,9 @@ export default {
   computed: {
     stats() {
       return this.$store.state.stats;
+    },
+    notification_message() {
+      return this.$store.state.notification_message;
     },
   },
 };
@@ -75,6 +83,7 @@ ul {
   margin-top: 10px;
   padding: 10px;
   background-color: #f7f7f7;
+  border-radius: 5px;
 }
 .booking-card:hover,
 .alert-card:hover {
