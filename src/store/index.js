@@ -19,7 +19,9 @@ export default createStore({
       state.bookings = bookings;
     },
     SET_BOOKING_NOTIFICATIONS(state, alerts) {
-      state.front_desk_alerts = alerts;
+      state.front_desk_alerts = alerts.frontDeskAlerts
+        ? alerts.frontDeskAlerts
+        : [];
     },
     SET_LAST_FETCHED_BOOKINGS(state, time) {
       state.last_fetched_bookings_timestamp = time;
