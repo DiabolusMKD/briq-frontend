@@ -68,19 +68,27 @@ export default {
 ul {
   list-style: none;
 }
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 .booking-list,
 .alert-list {
-  display: inline-flex;
-  flex-wrap: wrap;
-  width: 70%;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  margin: 1rem;
+}
+@media (min-width: 801px) {
+  .booking-list,
+  .alert-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 .booking-card,
 .alert-card {
   border: 1px solid #000;
-  width: calc(50% - 40px);
-  margin-left: 10px;
-  margin-top: 10px;
   padding: 10px;
   background-color: #f7f7f7;
   border-radius: 5px;

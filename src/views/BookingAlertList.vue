@@ -2,7 +2,7 @@
   <h1>Alert Notifications</h1>
   <div class="alert-list">
     <BookingAlertCard
-      v-for="(alert, key) in front_desk_alerts.frontDeskAlerts"
+      v-for="(alert, key) in front_desk_alerts"
       :key="key"
       :alert="alert"
     />

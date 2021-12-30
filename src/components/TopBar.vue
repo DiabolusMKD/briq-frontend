@@ -8,13 +8,21 @@
     </div>
     <div class="stats">
       <h3>Made:</h3>
-      <span>Today: {{ stats.kpis ? stats.kpis.bookings.madeThisDay : 0 }}</span>
-      <span>This Week: {{ stats.kpis ? stats.kpis.bookings.madeThisWeek : 0 }}</span>
+      <span>
+        Today: {{ stats.kpis ? stats.kpis.bookings.madeThisDay : 0 }}
+      </span>
+      <span>
+        This Week: {{ stats.kpis ? stats.kpis.bookings.madeThisWeek : 0 }}
+      </span>
     </div>
     <div class="stats">
       <h3>How Busy:</h3>
-      <span>Today: {{ stats.kpis ? stats.kpis.howBusyIsItFactor.thisDay : 0 }}</span>
-      <span>This Week: {{ stats.kpis ? stats.kpis.howBusyIsItFactor.thisWeek : 0 }}</span>
+      <span>
+        Today: {{ stats.kpis ? stats.kpis.howBusyIsItFactor.thisDay : 0 }}
+      </span>
+      <span>
+        This Week: {{ stats.kpis ? stats.kpis.howBusyIsItFactor.thisWeek : 0 }}
+      </span>
     </div>
   </div>
 </template>
